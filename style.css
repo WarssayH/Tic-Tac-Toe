@@ -1,0 +1,124 @@
+@import url(https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap);
+
+*, *::before, *::after {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.cell {
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.x, .cell.o {
+    cursor: not-allowed;
+}
+
+.cell:not(.x):not(.o):hover {
+    opacity: 0.8;
+    transform: scale(0.997);
+    transition: 0.25s ease-in;
+}
+
+.cell:not(.x):not(.o):active {
+    opacity: 0.7;
+    transform: scale(0.99);
+    transition: 0s;
+}
+
+.cell.x::before, .cell.x::after,
+.grid.x .cell:not(.x):not(.o):hover::before,
+.grid.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    height: 35vw;
+    width: 3vw;
+}
+
+.grid.x .cell:not(.x):not(.o):hover::before,
+.grid.x .cell:not(.x):not(.o):hover::after {
+    background-color: lightgrey;
+}
+
+.cell.x::before, .grid.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after, .grid.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before, .cell.o::after,
+.grid.o .cell:not(.x):not(.o):hover::before,
+.grid.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    height: 26vw;
+    width: 26vw;
+}
+
+.grid.o .cell:not(.x):not(.o):hover::before,
+.grid.o .cell:not(.x):not(.o):hover::after {
+    background-color: lightgrey;
+}
+
+.cell.o::after, .grid.o .cell:not(.x):not(.o):hover::after {
+    transform: scale(0.74);
+    background-color: white;
+}
+
+.results {
+    top: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    color: white;
+    background-color: black;
+    opacity: 0.8;
+    font-family: "Jost";
+}
+
+.results .winLose {
+    font-size: 18vw;
+    opacity: 1;
+}
+
+.results .XvsO {
+    font-size: 5vw;
+}
+
+.results .restartButton {
+    margin: 3vh;
+    border-radius: 5%;
+    font-size: 4vh;
+    height: 5vh;
+}
+
+.results.active {
+    top: 0px;
+}
