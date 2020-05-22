@@ -50,8 +50,8 @@ body {
     position: absolute;
     background-color: black;
     border-radius: 50%;
-    height: 35vw;
-    width: 3vw;
+    height: 40vh;
+    width: 5vh;
 }
 
 .grid.x .cell:not(.x):not(.o):hover::before,
@@ -74,8 +74,8 @@ body {
     position: absolute;
     background-color: black;
     border-radius: 50%;
-    height: 26vw;
-    width: 26vw;
+    height: 30vh;
+    width: 30vh;
 }
 
 .grid.o .cell:not(.x):not(.o):hover::before,
@@ -121,4 +121,19 @@ body {
 
 .results.active {
     top: 0px;
+}
+
+@media only screen and (orientation: portrait) {
+    .cell.x::before, .cell.x::after,
+    .grid.x .cell:not(.x):not(.o):hover::before,
+    .grid.x .cell:not(.x):not(.o):hover::after {
+        height: 40vw;
+    }
+
+    .cell.o::before, .cell.o::after,
+    .grid.o .cell:not(.x):not(.o):hover::before,
+    .grid.o .cell:not(.x):not(.o):hover::after {
+        height: 30vw;
+        width: 30vw;
+    }
 }
