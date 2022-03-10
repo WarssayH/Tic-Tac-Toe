@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="function.js" defer></script>
+        <title>Tic-Tac-Toe</title>
+    </head>
+    <body>
+        <div id="opponentOptions" class="active">
+            <h1 id="localHeader">Play Locally:</h1>
+                <button id="local">Local Multiplayer</button>
+            <h1 id="difficultyHeader">AI Opponent:</h1>
+                <button id="easy">Easy</button>
+                <button id="normal">Normal</button>
+                <button id="hard">Hard</button>
+            <p id="instruction">Select a difficulty setting, then use the cursor to claim cells.</p>
+        </div>
+        <div id="results" class="">
+            <h1 id="winLose"></h1>
+            <h2 id="XvsO"></h2>
+            <button id="restart">Restart!</button>
+        </div>
+        <div id="board" class="">
+            <div id="0" class="cell" cell></div>
+            <div id="1" class="cell" cell></div>
+            <div id="2" class="cell" cell></div>
+            <div id="3" class="cell" cell></div>
+            <div id="4" class="cell" cell></div>
+            <div id="5" class="cell" cell></div>
+            <div id="6" class="cell" cell></div>
+            <div id="7" class="cell" cell></div>
+            <div id="8" class="cell" cell></div>
+        </div>
+    </body>
+</html>

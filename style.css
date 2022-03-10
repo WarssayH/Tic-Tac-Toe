@@ -1,0 +1,194 @@
+@import url(https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap);
+
+/* Setting all margin, border, and padding to 0 for convienience. */
+*, *::before, *::after {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+/* Styling of the body. */
+body {
+    overflow: hidden;
+    background-color: black;
+}
+
+/* Styling of the board. */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4px;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Styling for all cells. */
+.cell {
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for any claimed cell. */
+.cell.x, .cell.o {
+    cursor: not-allowed;
+}
+
+/* Styling for when an unclaimed cell is hovered over. */
+.cell:not(.x):not(.o):hover {
+    opacity: 0.8;
+    transform: scale(0.997);
+    transition: 0.25s ease-in;
+}
+
+/* Styling for when an unclaimed cell is clicked on. */
+.cell:not(.x):not(.o):active {
+    opacity: 0.7;
+    transform: scale(0.99);
+    transition: 0s;
+}
+
+/* Styling for the X. */
+.cell.x::before, .cell.x::after,
+#board.x .cell:not(.x):not(.o):hover::before,
+#board.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    height: 40vh;
+    width: 5vh;
+}
+
+/* Styling exclusive to the before element of the X */
+.cell.x::before, #board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+/* Styling exclusive to the after element of the X. */
+.cell.x::after, #board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+/* Styling for the O. */
+.cell.o::before, .cell.o::after,
+#board.o .cell:not(.x):not(.o):hover::before,
+#board.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    height: 30vh;
+    width: 30vh;
+}
+
+/* Styling exclusive to the inside of the O. */
+.cell.o::after, #board.o .cell:not(.x):not(.o):hover::after {
+    transform: scale(0.74);
+    background-color: white;
+}
+
+/* Styling for the mark when the player is hovering over an unoccupied cell.*/
+#board.o .cell:not(.x):not(.o):hover::before,
+#board.x .cell:not(.x):not(.o):hover::before,
+#board.x .cell:not(.x):not(.o):hover::after {
+    background-color: lightgrey;
+}
+
+/* Styling for the results tab. Is hidden from view by default, only displayed after a victory or draw. */
+#results {
+    top: -100vh;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    background-color: black;
+    opacity: 0.8;
+    font-family: "Jost";
+    transition: 150ms ease-in;
+    z-index: 2;
+}
+
+#opponentOptions {
+    top: -100vh;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    background-color: black;
+    opacity: 0.8;
+    font-family: "Jost";
+    transition: 150ms ease-in;
+    z-index: 2;
+}
+
+/* Display the results when active is in its class list */
+.active {
+    top: 0px !important;
+}
+
+#local, #easy, #normal, #hard {
+    flex-direction: row;
+    font-size: 10vh;
+    height: 12vh;
+    width: 40vw;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+#localHeader, #difficultyHeader {
+    font-size: 8vw;
+}
+
+#instruction {
+    font-size: 4vh;
+}
+
+/* Font size for the results of the previous match */
+#winLose {
+    font-size: 17vw;
+}
+
+/* Font size for the results of the whole play session */
+#XvsO {
+    font-size: 5vw;
+}
+
+/* Styling for the restart button */
+#restart {
+    margin: 3vh;
+    border-radius: 5%;
+    font-size: 4vh;
+    height: 5vh;
+}
+
+/* 
+  Change the cell and mark proportions to be based off the view width rather than height
+  when we enter portrait mode, for a smooth transition between each.
+*/
+@media only screen and (orientation: portrait) {
+    .cell.x::before, .cell.x::after,
+    #board.x .cell:not(.x):not(.o):hover::before,
+    #board.x .cell:not(.x):not(.o):hover::after {
+        height: 40vw;
+        width: 5vw;
+    }
+
+    .cell.o::before, .cell.o::after,
+    #board.o .cell:not(.x):not(.o):hover::before,
+    #board.o .cell:not(.x):not(.o):hover::after {
+        height: 30vw;
+        width: 30vw;
+    }
+}
