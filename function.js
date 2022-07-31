@@ -159,7 +159,7 @@ function takeTurn() {
 
     while (choice === null) {
         console.log("Guess.")
-        id = randomIntInterval(0, 8);                                    // If no cells led to immediate victory, pick a random cell to claim
+        id = randomIntInterval(0, 8);                                    // If no cell was chosen, pick a random cell to claim
         if (boardState[id] === "") choice = id;                          // If the cell we randomly chose is unclaimed, use it
     }
 

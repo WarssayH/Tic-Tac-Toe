@@ -1,25 +1,20 @@
 @import url(https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap);
 
-/* Setting all margin, border, and padding to 0 for convienience. */
-*, *::before, *::after {
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
-
 /* Styling of the body. */
-body {
+* {
     overflow: hidden;
-    background-color: black;
+    margin: 0;
+    padding: 0;
 }
 
 /* Styling of the board. */
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4px;
     height: 100vh;
     width: 100vw;
+    background-color: black;
+    gap: 4px 4px;
 }
 
 /* Styling for all cells. */
@@ -142,17 +137,22 @@ body {
     font-size: 10vh;
     height: 12vh;
     width: 40vw;
-    margin: 0px;
-    padding: 0px;
+    opacity: 1;
     background-color: white;
 }
 
+#local {
+    width: 60vw;
+}
+
 #localHeader, #difficultyHeader {
-    font-size: 8vw;
+    padding-top: 3vh;
+    font-size: 10vh;
 }
 
 #instruction {
     font-size: 4vh;
+    text-align: center;
 }
 
 /* Font size for the results of the previous match */
@@ -176,8 +176,10 @@ body {
 /* 
   Change the cell and mark proportions to be based off the view width rather than height
   when we enter portrait mode, for a smooth transition between each.
+
+  Change the menu button font sizes
 */
-@media only screen and (orientation: portrait) {
+@media only screen and (max-aspect-ratio: 8 / 10) {
     .cell.x::before, .cell.x::after,
     #board.x .cell:not(.x):not(.o):hover::before,
     #board.x .cell:not(.x):not(.o):hover::after {
@@ -190,5 +192,23 @@ body {
     #board.o .cell:not(.x):not(.o):hover::after {
         height: 30vw;
         width: 30vw;
+    }
+
+    #local, #easy, #normal, #hard {
+        font-size: 14vw;
+        width: 100vw;
+    }
+    
+    #localHeader, #difficultyHeader {
+        padding-top: 3vh;
+        font-size: 10vw;
+    }
+
+    #instruction {
+        font-size: 4vw;
+    }
+
+    #restart {
+        font-size: 4vw;
     }
 }
